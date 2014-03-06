@@ -1,0 +1,31 @@
+Display <%= link_to "Create new", new_faculty_path %>
+<hr>
+<table id="faculties" border="1">
+	<% if !@faculties.blank? %>
+	<% @faculties.each do |faculty| %>
+	    <tr>
+	  		<td>
+	  			<%= faculty.facultyname %>
+	  		</td>
+	  		<td>
+	  			<%= link_to 'Destroy', faculty, method: :delete %>
+	  		</td>
+	  		<td>
+	  			<%= link_to 'Edit', edit_faculty_path(faculty) %>
+	  		</td>
+	    </tr>
+	<% end %>
+	<% else %>
+	  
+	<% end %>
+</table>
+<hr>
+<div id="faculties">
+<% if !@faculties.blank? %>
+
+<%= select_tag :faculty, options_for_select(@faculties.map{ |f| [f.facultyname, f.facultyname] }) %>
+
+<% else %>
+
+<% end %>
+</div>

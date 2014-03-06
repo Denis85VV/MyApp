@@ -1,0 +1,34 @@
+Display <%= link_to "Create new", new_specialty_path %>
+<hr>
+<table border="1">
+	<% if !@specialties.blank? %>
+	<% @specialties.each do |specialty| %>
+	    <tr>
+	    	<td>
+	    		<%= specialty.specialtynumber %>
+	    	</td>	
+	  		<td>
+	  			<%= specialty.specialtyname %>
+	  		</td>
+	  		<td>
+	  			<%= link_to 'Destroy', specialty, method: :delete %>
+	  		</td>
+	  		<td>
+	  			<%= link_to 'Edit', edit_specialty_path(specialty) %>
+	  		</td>
+	    </tr>
+	<% end %>
+	<% else %>
+	  
+	<% end %>
+</table>
+<hr>
+<div>
+<% if !@specialties.blank? %>
+
+<%= select_tag :specialty, options_for_select(@specialties.map{ |f| [f.specialtynumber, f.specialtyname] }) %>
+
+<% else %>
+
+<% end %>
+</div>

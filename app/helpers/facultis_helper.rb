@@ -1,0 +1,2 @@
+module FacultisHelper
+end
