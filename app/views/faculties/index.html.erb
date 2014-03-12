@@ -5,7 +5,7 @@ Display <%= link_to "Create new", new_faculty_path %>
 	<% @faculties.each do |faculty| %>
 	    <tr>
 	  		<td>
-	  			<%= faculty.facultyname %>
+	  			<%= link_to faculty.facultyname, faculty_path(faculty) %>
 	  		</td>
 	  		<td>
 	  			<%= link_to 'Destroy', faculty, method: :delete %>
@@ -23,6 +23,7 @@ Display <%= link_to "Create new", new_faculty_path %>
 <div id="faculties">
 <% if !@faculties.blank? %>
 
+<%= select_tag :faculty, options_for_select(@faculties.map{ |f| [f.facultyname, f.facultyname] }) %>
 <%= select_tag :faculty, options_for_select(@faculties.map{ |f| [f.facultyname, f.facultyname] }) %>
 
 <% else %>

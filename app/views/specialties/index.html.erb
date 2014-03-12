@@ -5,7 +5,7 @@ Display <%= link_to "Create new", new_specialty_path %>
 	<% @specialties.each do |specialty| %>
 	    <tr>
 	    	<td>
-	    		<%= specialty.specialtynumber %>
+	    		<%= link_to specialty.specialtynumber, specialty_path(specialty) %>
 	    	</td>	
 	  		<td>
 	  			<%= specialty.specialtyname %>

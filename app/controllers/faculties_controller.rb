@@ -8,13 +8,16 @@ class FacultiesController < ApplicationController
 		@fac.save
 		redirect_to new_faculty_path
 	end
-
+	def show
+		@fac = Faculty.find(params[:id])
+	end
 	def index
 		@faculties = Faculty.all
 	end
 
 	def edit
 		@fac = Faculty.find(params[:id])
+		@spec = Specialty.find(params[:id])
 	end
 	
 	def update

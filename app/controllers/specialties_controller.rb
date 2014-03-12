@@ -12,6 +12,9 @@ class SpecialtiesController < ApplicationController
 	def index
 		@specialties = Specialty.all
 	end
+	def show
+		@spec = Specialty.find(params[:id])
+	end
 
 	def edit
 		@spec = Specialty.find(params[:id])
