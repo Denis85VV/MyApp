@@ -1,1 +1,8 @@
 Факультет: <%= @fac.facultyname %><br/>
+<% if not @fac.specialties.blank? %>
+<ul>Специальности
+	<% @fac.specialties.each do |spec| %>
+	<li><%= spec.specialtyname %></li>
+<% end %>
+</ul>
+<% end %>

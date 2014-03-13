@@ -1,2 +1,8 @@
 Специальность:<%= @spec.specialtyname %><br/>
 № специальности <%= @spec.specialtynumber %><br/>
+Факультет <%= @spec.faculty.try(:facultyname) %><br/>
+
+<%= form_for(@spec) do |f| %>
+<%= f.select :faculty_id, options_for_select(@faculties.map{ |f| [f.facultyname, f.id] }) %>
+<%= f.submit %>
+<% end %>
