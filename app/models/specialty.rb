@@ -1,4 +1,4 @@
 class Specialty < ActiveRecord::Base
-	# belong_to :faculty
+	belongs_to :faculty
 end
             

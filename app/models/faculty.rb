@@ -1,3 +1,3 @@
 class Faculty < ActiveRecord::Base
-	# has_many :spacialties
+	has_many :specialties
 end

@@ -17,7 +17,6 @@ class FacultiesController < ApplicationController
 
 	def edit
 		@fac = Faculty.find(params[:id])
-		@spec = Specialty.find(params[:id])
 	end
 	
 	def update
