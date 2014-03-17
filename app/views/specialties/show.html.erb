@@ -1,6 +1,8 @@
-Специальность:<%= @spec.specialtyname %><br/>
-№ специальности <%= @spec.specialtynumber %><br/>
-Факультет <%= @spec.faculty.try(:facultyname) %><br/>
+<%= link_to "Show all", specialties_path %><br/>
+Go to <%= link_to "faculty", faculties_path %><br/>
+Специальность: <%= @spec.specialtyname %><br/>
+№ специальности:  <%= @spec.specialtynumber %><br/>
+Факультет: <%= @spec.faculty.try(:facultyname) %><br/>
 
 <%= form_for(@spec) do |f| %>
 <%= f.select :faculty_id, options_for_select(@faculties.map{ |f| [f.facultyname, f.id] }) %>

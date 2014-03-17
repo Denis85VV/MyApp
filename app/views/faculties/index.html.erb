@@ -24,7 +24,6 @@ Display <%= link_to "Create new", new_faculty_path %>
 <% if !@faculties.blank? %>
 
 <%= select_tag :faculty, options_for_select(@faculties.map{ |f| [f.facultyname, f.facultyname] }) %>
-<%= select_tag :faculty, options_for_select(@faculties.map{ |f| [f.facultyname, f.facultyname] }) %>
 
 <% else %>
 

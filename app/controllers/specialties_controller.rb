@@ -24,7 +24,7 @@ class SpecialtiesController < ApplicationController
 	def update
 		@spec = Specialty.find(params[:id])
 		@spec.update_attributes(specialty_params)
-		redirect_to specialties_path
+		redirect_to specialty_path
 	end
 
 	def destroy

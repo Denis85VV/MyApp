@@ -1,8 +1,10 @@
+<%= link_to "Show all", faculties_path %><br/>
+Go to <%= link_to "spesialty", specialties_path %><br/>
 Факультет: <%= @fac.facultyname %><br/>
 <% if not @fac.specialties.blank? %>
-<ul>Специальности
+<ul>Специальности: 
 	<% @fac.specialties.each do |spec| %>
-	<li><%= spec.specialtyname %></li>
+	<li><%= spec.specialtyname %> <%= link_to 'Destroy', spec, method: :delete %></li>
 <% end %>
 </ul>
 <% end %>
