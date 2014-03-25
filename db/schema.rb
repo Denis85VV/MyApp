@@ -11,10 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140313135139) do
+ActiveRecord::Schema.define(version: 20140320131023) do
+
+  create_table "consists", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "faculties", force: true do |t|
     t.string   "facultyname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "personalfiles", force: true do |t|
+    t.string   "firstname"
+    t.string   "middlename"
+    t.string   "lastname"
+    t.string   "gender"
+    t.string   "year"
+    t.string   "traningcourse"
+    t.string   "academicyear"
+    t.string   "specialaccount"
+    t.string   "mobileorder"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "positions", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ranks", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recruitmentoffices", force: true do |t|
+    t.string   "smallname"
+    t.text     "bigname"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

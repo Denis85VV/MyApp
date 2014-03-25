@@ -1,6 +1,11 @@
 SFAppSpANDFac::Application.routes.draw do
   resources :faculties
   resources :specialties
+  resources :recruitmentoffices
+  resources :ranks
+  resources :consists
+  resources :positions
+  resources :personalfiles
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

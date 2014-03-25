@@ -1,0 +1,20 @@
+<%= link_to "Show all", personalfiles_path %>
+<%= form_for @per do |f| -%>
+	<p>
+		<%= f.text_field :firstname %><br />
+		<%= f.text_field :middlename %><br />
+		<%= f.text_field :lastname %><br />
+	</p>
+	<p>
+		<%= f.select :gender, [["М", "М"], ["Ж", "Ж"]] %>
+	</p>
+	<p>
+		<% if !@ranks.blank? %>
+		<%= select_tag :rank, options_for_select(@ranks.map{ |f| [f.name, f.name] }) %>
+		<% else %>
+		<% end %>
+	</p>
+
+	<%= f.submit "Save" %>
+<% end -%>
+<hr>

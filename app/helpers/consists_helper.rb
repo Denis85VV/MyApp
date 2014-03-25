@@ -1,0 +1,2 @@
+module ConsistsHelper
+end

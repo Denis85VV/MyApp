@@ -1,0 +1,31 @@
+Display <%= link_to "Create new", new_consist_path %>
+<hr>
+<table border="1">
+	<% if !@consists.blank? %>
+	<% @consists.each do |consist| %>
+	    <tr>
+	    	<td>
+	    		<%= consist.name %>
+	    	</td>	
+	  		<td>
+	  			<%= link_to 'Destroy', consist, method: :delete %>
+	  		</td>
+	  		<td>
+	  			<%= link_to 'Edit', edit_consist_path(consist) %>
+	  		</td>
+	    </tr>
+	<% end %>
+	<% else %>
+	  
+	<% end %>
+</table>
+<hr>
+<div>
+<% if !@consists.blank? %>
+
+<%= select_tag :consist, options_for_select(@consists.map{ |f| [f.name, f.name] }) %>
+
+<% else %>
+
+<% end %>
+</div>

@@ -1,0 +1,31 @@
+Display <%= link_to "Create new", new_position_path %>
+<hr>
+<table border="1">
+	<% if !@positions.blank? %>
+	<% @positions.each do |position| %>
+	    <tr>
+	    	<td>
+	    		<%= position.name %>
+	    	</td>	
+	  		<td>
+	  			<%= link_to 'Destroy', position, method: :delete %>
+	  		</td>
+	  		<td>
+	  			<%= link_to 'Edit', edit_position_path(position) %>
+	  		</td>
+	    </tr>
+	<% end %>
+	<% else %>
+	  
+	<% end %>
+</table>
+<hr>
+<div>
+<% if !@positions.blank? %>
+
+<%= select_tag :position, options_for_select(@positions.map{ |f| [f.name, f.name] }) %>
+
+<% else %>
+
+<% end %>
+</div>

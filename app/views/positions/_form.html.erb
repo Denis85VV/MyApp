@@ -1,0 +1,6 @@
+<%= link_to "Show all", positions_path %>
+<%= form_for @pos do |f| -%>
+	Enter your rank <%= f.text_field :name %><br />
+	<%= f.submit "Save" %>
+<% end -%>
+<hr>

@@ -1,0 +1,34 @@
+Display <%= link_to "Create new", new_recruitmentoffice_path %>
+<hr>
+<table border="1">
+	<% if !@recruitmentoffices.blank? %>
+	<% @recruitmentoffices.each do |recruitmentoffice| %>
+	    <tr>
+	    	<td>
+	    		<%= recruitmentoffice.smallname %>
+	    	</td>	
+	  		<td>
+	  			<%= recruitmentoffice.bigname %>
+	  		</td>
+	  		<td>
+	  			<%= link_to 'Destroy', recruitmentoffice, method: :delete %>
+	  		</td>
+	  		<td>
+	  			<%= link_to 'Edit', edit_recruitmentoffice_path(recruitmentoffice) %>
+	  		</td>
+	    </tr>
+	<% end %>
+	<% else %>
+	  
+	<% end %>
+</table>
+<hr>
+<div>
+<% if !@recruitmentoffices.blank? %>
+
+<%= select_tag :recruitmentoffice, options_for_select(@recruitmentoffices.map{ |f| [f.smallname, f.bigname] }) %>
+
+<% else %>
+
+<% end %>
+</div>

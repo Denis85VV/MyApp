@@ -1,0 +1,6 @@
+<%= link_to "Show all", faculties_path %>
+<%= form_for @fac do |f| -%>
+	Enter your faculty <%= f.text_field :facultyname %><br />
+	<%= f.submit "Save" %>
+<% end -%>
+<hr>

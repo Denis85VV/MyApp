@@ -1,0 +1,7 @@
+<%= link_to "Show all", recruitmentoffices_path %>
+<%= form_for @recru do |f| -%>
+	Enter your recruitment office small name <%= f.text_field :smallname %><br />
+	Enter your recruitment office big name <%= f.text_area :bigname %><br />
+	<%= f.submit "Save" %>
+<% end -%>
+<hr>

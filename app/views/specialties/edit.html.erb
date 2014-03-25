@@ -1,7 +1,1 @@
-<%= link_to "Show all", specialties_path %>
-<%= form_for @spec do |f| -%>
-	Enter your specialty name <%= f.text_field :specialtyname %><br />
-	Enter your specialty number <%= f.text_field :specialtynumber %><br />
-	<%= f.submit "Save" %>
-<% end -%>
-<hr>
+<%= render 'form' %>

@@ -1,0 +1,6 @@
+<%= link_to "Show all", consists_path %>
+<%= form_for @con do |f| -%>
+	Enter your consist <%= f.text_field :name %><br />
+	<%= f.submit "Save" %>
+<% end -%>
+<hr>

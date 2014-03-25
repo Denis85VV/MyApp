@@ -1,0 +1,31 @@
+Display <%= link_to "Create new", new_rank_path %>
+<hr>
+<table border="1">
+	<% if !@ranks.blank? %>
+	<% @ranks.each do |rank| %>
+	    <tr>
+	    	<td>
+	    		<%= rank.name %>
+	    	</td>	
+	  		<td>
+	  			<%= link_to 'Destroy', rank, method: :delete %>
+	  		</td>
+	  		<td>
+	  			<%= link_to 'Edit', edit_rank_path(rank) %>
+	  		</td>
+	    </tr>
+	<% end %>
+	<% else %>
+	  
+	<% end %>
+</table>
+<hr>
+<div>
+<% if !@ranks.blank? %>
+
+<%= select_tag :rank, options_for_select(@ranks.map{ |f| [f.name, f.name] }) %>
+
+<% else %>
+
+<% end %>
+</div>

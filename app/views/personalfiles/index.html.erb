@@ -1,0 +1,31 @@
+<table border="1">
+	<% if !@personalfiles.blank? %>
+	<% @personalfiles.each do |personalfile| %>
+	    <tr>
+	    	<td>
+	    		<%= personalfile.firstname %>
+	    	</td>	
+	  		<td>
+	  			<%= personalfile.middlename %>
+	  		</td>
+	  		<td>
+	  			<%= personalfile.lastname %>
+	  		</td>
+	  		<td>
+	  			<%= personalfile.gender %>
+	  		</td>
+	  		<td>
+	  			<%= personalfile.rank.try(:name) %>
+	  		</td>
+	  		<td>
+	  			<%= link_to 'Destroy', personalfile, method: :delete %>
+	  		</td>
+	  		<td>
+	  			<%= link_to 'Edit', edit_personalfile_path(personalfile) %>
+	  		</td>
+	    </tr>
+	<% end %>
+	<% else %>
+	  
+	<% end %>
+</table>
