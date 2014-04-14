@@ -2,6 +2,9 @@ class PersonalfilesController < ApplicationController
 	def new
 		@per = Personalfile.new
 		@ranks = Rank.all
+		@faculties = Faculty.all
+		@specialties = Specialty.all
+		@recruitmentoffices = Recruitmentoffice.all
 	end
 
 	def create
@@ -18,6 +21,10 @@ class PersonalfilesController < ApplicationController
 
 	def edit
 		@per = Personalfile.find(params[:id])
+		@ranks = Rank.all
+		@faculties = Faculty.all
+		@specialties = Specialty.all
+		@recruitmentoffices = Recruitmentoffice.all
 	end
 	
 	def update
@@ -35,6 +42,6 @@ class PersonalfilesController < ApplicationController
 	private 
 
 	def personalfile_params
-		params[:personalfile].permit(:firstname, :middlename, :lastname, :gender, :year, :traningcourse, :academicyear, :specialaccount, :mobileorder, :category)
+		params[:personalfile].permit(:firstname, :middlename, :lastname, :gender, :year, :traningcourse, :academicyear, :specialaccount, :mobileorder, :category, :rank_id, :specialty_id, :recruitmentoffice_id)
 	end
 end

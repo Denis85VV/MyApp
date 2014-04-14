@@ -1,21 +1,58 @@
+<%= link_to "Create new", new_personalfile_path %>
+<hr>
 <table border="1">
+			<tr>
+				<th>№</th>
+				<th>ФИО</th>
+				<th>Пол</th>
+				<th>Год	</th>
+				<th>№ Спец</th>
+				<th>Наз.Спец</th>
+				<th>Наз.Фак</th>
+				<th>Курс</th>
+				<th>Учеб. год</th>
+				<th>Звание</th>
+				<th>Военкомат</th>
+			</tr>
 	<% if !@personalfiles.blank? %>
 	<% @personalfiles.each do |personalfile| %>
 	    <tr>
 	    	<td>
-	    		<%= personalfile.firstname %>
-	    	</td>	
-	  		<td>
-	  			<%= personalfile.middlename %>
-	  		</td>
-	  		<td>
+	    		<%= personalfile.id %>
+	    	</td>
+	    	<td>
+	    		<%= personalfile.firstname %><br />
+	    	
+	  			<%= personalfile.middlename %><br />
+
 	  			<%= personalfile.lastname %>
 	  		</td>
 	  		<td>
 	  			<%= personalfile.gender %>
 	  		</td>
 	  		<td>
+	  			<%= personalfile.year %>
+	  		</td>
+	  		<td>
+	  			<%= personalfile.specialty.try(:specialtynumber) %>
+	  		</td>
+	  		<td>
+	  			<%= personalfile.specialty.try(:specialtyname) %>
+	  		</td>	
+	  		<td>
+	  			<%= personalfile.specialty.try(:faculty).try(:facultyname) %>	
+	  		</td>
+	  		<td>
+	  			<%= personalfile.traningcourse %>
+	  		</td>
+	  		<td>
+	  			<%= personalfile.academicyear %>
+	  		</td>
+	  		<td>
 	  			<%= personalfile.rank.try(:name) %>
+	  		</td>
+	  		<td>
+	  			<%= personalfile.recruitmentoffice.try(:bigname) %>
 	  		</td>
 	  		<td>
 	  			<%= link_to 'Destroy', personalfile, method: :delete %>

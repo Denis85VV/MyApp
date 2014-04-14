@@ -1,7 +1,18 @@
 <%= link_to "Show all", recruitmentoffices_path %>
 <%= form_for @recru do |f| -%>
-	Enter your recruitment office small name <%= f.text_field :smallname %><br />
-	Enter your recruitment office big name <%= f.text_area :bigname %><br />
+
+	Краткое название военкомата:<br />
+	<%= f.text_field :smallname %><br />
+
+	Полное название военкомата:<br />
+	<%= f.text_area :bigname %><br />
+
+	Номер телефона военкомата:<br />
+	<%= f.text_field :phone_number %><br />
+
+	Адрес военкомата:<br />
+	<%= f.text_field :address %><br />
+	
 	<%= f.submit "Save" %>
 <% end -%>
 <hr>

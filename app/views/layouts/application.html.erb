@@ -7,7 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+		<table border = "1">
+			<tr>
+				<td>Главная</td>
+				<td ><%= link_to "Личная карточка", personalfiles_path %></td>
+				<td>Списки</td>
+				<td>Отчеты</td>
+				<td>Информация</td>
+			</tr>
+		</table>
+<hr>
 <%= yield %>
 
 </body>

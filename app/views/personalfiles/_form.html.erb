@@ -1,0 +1,43 @@
+<%= link_to "Show all", personalfiles_path %>
+<hr>
+<%= form_for @per do |f| -%>
+	<p>
+		Фамилия:<br />
+		<%= f.text_field :firstname %><br />
+		Имя:<br /> 
+		<%= f.text_field :middlename %><br />
+		Отчество:<br /> 
+		<%= f.text_field :lastname %><br />
+	</p>
+	<p>
+		Год рождения:<br />
+		<%= f.select :year, [["1990", "1990"], ["1991", "1991"], ["1992", "1992"], ["1993", "1993"], ["1994", "1994"], ["1995", "1995"], ["1996", "1996"], ["1997", "1997"], ["1998", "1998"], ["1999", "1999"], ["2000", "2000"], ["2001", "2001"], ["2002", "2002"]] %><br />
+	</p>
+	<p>
+		Пол:<br />
+		 <%= f.select :gender, [["М", "М"], ["Ж", "Ж"]] %>
+	</p>
+	<p>
+		Звание:<br />
+		 <%= f.select :rank_id, options_for_select(@ranks.map{ |r| [r.name, r.id] }) %>
+	</p>
+	<p>
+		Специальность:<br />
+		 <%= f.select :specialty_id, options_for_select(@specialties.map{ |f| [f.specialtyname, f.id] }) %>
+	</p>
+	<p>
+		Курс:<br />
+		 <%= f.select :traningcourse, [["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5", "5"], ["Асп", "Асп"]] %>
+	</p>
+	<p>
+		Учебный год:<br />
+		 <%= f.select :academicyear, [["11-12", "11-12"], ["12-13", "12-13"], ["13-14", "13-14"],["14-15", "14-15"], ["15-16", "15-16"]] %>
+	</p>
+	<p>
+		Военкомат:<br />
+		 <%= f.select :recruitmentoffice_id, options_for_select(@recruitmentoffices.map{ |f| [f.smallname, f.id] })%>
+	</p>
+
+	<%= f.submit "Save" %>
+<% end -%>
+<hr>

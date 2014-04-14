@@ -1,6 +1,7 @@
 <%= link_to "Show all", ranks_path %>
 <%= form_for @ran do |f| -%>
-	Enter your rank <%= f.text_field :name %><br />
+	Название ранга:<br />
+	<%= f.text_field :name %><br />
 	<%= f.submit "Save" %>
 <% end -%>
 <hr>

@@ -35,6 +35,6 @@ class RecruitmentofficesController < ApplicationController
 	private 
 
 	def recruitmentoffice_params
-		params[:recruitmentoffice].permit(:smallname, :bigname)
+		params[:recruitmentoffice].permit(:smallname, :bigname, :phone_number, :address)
 	end
 end
