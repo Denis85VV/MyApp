@@ -18,25 +18,50 @@
 		 <%= f.select :gender, [["М", "М"], ["Ж", "Ж"]] %>
 	</p>
 	<p>
-		Звание:<br />
-		 <%= f.select :rank_id, options_for_select(@ranks.map{ |r| [r.name, r.id] }) %>
-	</p>
-	<p>
 		Специальность:<br />
 		 <%= f.select :specialty_id, options_for_select(@specialties.map{ |f| [f.specialtyname, f.id] }) %>
 	</p>
 	<p>
 		Курс:<br />
-		 <%= f.select :traningcourse, [["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5", "5"], ["Асп", "Асп"]] %>
+		 <%= f.select :traningcourse, [["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5", "5"],["Маг1", "Маг1"],["Маг2", "Маг2"], ["Асп", "Асп"]] %>
 	</p>
 	<p>
 		Учебный год:<br />
 		 <%= f.select :academicyear, [["11-12", "11-12"], ["12-13", "12-13"], ["13-14", "13-14"],["14-15", "14-15"], ["15-16", "15-16"]] %>
 	</p>
 	<p>
+		Срок обучения:<br />
+		 <%= f.select :traning_period, [["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5", "5"]] %>
+	</p>
+	<p>
+		Воинское звание:<br />
+		 <%= f.select :rank_id, options_for_select(@ranks.map{ |f| [f.name, f.id] })%>
+	</p>
+	<p>
+		Состав:<br />
+		 <%= f.select :consist_id, options_for_select(@consists.map{ |f| [f.name, f.id] })%>
+	</p>
+	<p>
 		Военкомат:<br />
 		 <%= f.select :recruitmentoffice_id, options_for_select(@recruitmentoffices.map{ |f| [f.smallname, f.id] })%>
 	</p>
+	<p>
+		Должность:<br />
+		 <%= f.select :position_id, options_for_select(@positions.map{ |f| [f.name, f.id] })%>
+	</p>
+	<p>
+		Спецучет:<br />
+		 <%= f.select :specialaccount, [[" ", " "], ["Су", "Су"]] %><br />
+		 Мобпредписание:<br />
+		 <%= f.select :mobileorder, [[" ", " "], ["М", "М"]] %><br />
+		 Категории:<br />
+		 <%= f.select :category, [[" ", " "], ["Ра", "Ра"], ["О", "О"], ["Во", "Во"], ["Ру", "Ру"], ["Дс", "Дс"]] %>
+	</p>
+	<p> 
+		Примечание(№ телефона):<br />
+		<%= f.text_field :note %>
+	</p>
+
 
 	<%= f.submit "Save" %>
 <% end -%>

@@ -5,6 +5,8 @@ class PersonalfilesController < ApplicationController
 		@faculties = Faculty.all
 		@specialties = Specialty.all
 		@recruitmentoffices = Recruitmentoffice.all
+		@consists = Consist.all
+		@positions = Position.all
 	end
 
 	def create
@@ -25,6 +27,8 @@ class PersonalfilesController < ApplicationController
 		@faculties = Faculty.all
 		@specialties = Specialty.all
 		@recruitmentoffices = Recruitmentoffice.all
+		@consists = Consist.all
+		@positions = Position.all
 	end
 	
 	def update
@@ -42,6 +46,6 @@ class PersonalfilesController < ApplicationController
 	private 
 
 	def personalfile_params
-		params[:personalfile].permit(:firstname, :middlename, :lastname, :gender, :year, :traningcourse, :academicyear, :specialaccount, :mobileorder, :category, :rank_id, :specialty_id, :recruitmentoffice_id)
+		params[:personalfile].permit(:firstname, :middlename, :lastname, :gender, :year, :traningcourse, :academicyear, :traning_period, :specialaccount, :mobileorder, :category, :rank_id, :specialty_id, :recruitmentoffice_id, :consist_id, :position_id, :note)
 	end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413174323) do
+ActiveRecord::Schema.define(version: 20140414131105) do
 
   create_table "consists", force: true do |t|
     t.string   "name"
@@ -41,6 +41,10 @@ ActiveRecord::Schema.define(version: 20140413174323) do
     t.integer  "rank_id"
     t.integer  "specialty_id"
     t.integer  "recruitmentoffice_id"
+    t.integer  "consist_id"
+    t.string   "traning_period"
+    t.integer  "position_id"
+    t.string   "note"
   end
 
   create_table "positions", force: true do |t|

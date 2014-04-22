@@ -11,8 +11,15 @@
 				<th>Наз.Фак</th>
 				<th>Курс</th>
 				<th>Учеб. год</th>
+				<th>Срок обуч.</th>
 				<th>Звание</th>
+				<th>Состав</th>
 				<th>Военкомат</th>
+				<th>Должность</th>
+				<th>Сп.Уч</th>
+				<th>Мб.Пр.</th>
+				<th>Кат.</th>
+				<th>Примечание</th>
 			</tr>
 	<% if !@personalfiles.blank? %>
 	<% @personalfiles.each do |personalfile| %>
@@ -49,10 +56,31 @@
 	  			<%= personalfile.academicyear %>
 	  		</td>
 	  		<td>
+	  			<%= personalfile.traning_period %>
+	  		</td>
+	  		<td>
 	  			<%= personalfile.rank.try(:name) %>
 	  		</td>
 	  		<td>
+	  			<%= personalfile.consist.try(:name) %>
+	  		</td>
+	  		<td>
 	  			<%= personalfile.recruitmentoffice.try(:bigname) %>
+	  		</td>
+	  		<td>
+	  			<%= personalfile.position.try(:name) %>
+	  		</td>
+	  		<td>
+	  			<%= personalfile.specialaccount %>
+	  		</td>
+	  		<td>
+	  			<%= personalfile.mobileorder %>
+	  		</td>
+	  		<td>
+	  			<%= personalfile.category %>
+	  		</td>
+	  		<td>
+	  			<%= personalfile.note %>
 	  		</td>
 	  		<td>
 	  			<%= link_to 'Destroy', personalfile, method: :delete %>
