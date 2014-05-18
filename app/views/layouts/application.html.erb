@@ -5,18 +5,58 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <script language="javascript">
+	function CallPrint(strid)
+	{
+	 var prtContent = document.getElementById(strid);
+	 var prtCSS = '<link rel="stylesheet" href="spravka.css" >';
+	 var WinPrint = window.open('','','left=50,top=50,width=800,height=640,toolbar=0,scrollbars=1,status=0');
+	 WinPrint.document.write('<div id="print" class="contentpane">');
+	 WinPrint.document.write(prtCSS);
+	 WinPrint.document.write(prtContent.innerHTML);
+	 WinPrint.document.write('</div>');
+	 WinPrint.document.close();
+	 WinPrint.focus();
+	 WinPrint.print();
+	 WinPrint.close();
+	 prtContent.innerHTML=strOldOne;
+	}
+  </script>
 </head>
 <body>
-		<table border = "1">
-			<tr>
-				<td>Главная</td>
-				<td ><%= link_to "Личная карточка", personalfiles_path %></td>
-				<td>Списки</td>
-				<td>Отчеты</td>
-				<td>Информация</td>
-			</tr>
-		</table>
-<hr>
+	<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <% if user_signed_in? %>
+
+      <a class="brand" ><%= current_user.email %></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Главная" %></li>
+          <li><%= link_to "Личная карточка", personalfiles_path %></li>
+          <li><%= link_to "Списки" %></li>
+          <li><%= link_to "Отчеты" %></li>
+          <li><%= link_to "Информация" %></li>
+          <li><%= link_to "Выйти", destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+          <!--<%= link_to "Войти", new_user_session_path %>-->
+          <% end -%>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<% if user_signed_in? %>	
+	<%= current_user.email %> <%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
+<% else %>
+ <%= link_to "Регистироваться", new_user_registration_path %> или  <%= link_to "Войти", new_user_session_path %>
+<% end %> -->
 <%= yield %>
 
 </body>

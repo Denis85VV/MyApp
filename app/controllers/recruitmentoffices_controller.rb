@@ -5,7 +5,11 @@ class RecruitmentofficesController < ApplicationController
 
 	def create
 		@recru = Recruitmentoffice.new recruitmentoffice_params
-		@recru.save
+		if @recru.save
+			flash[:notice]="Success" 
+		else
+			flash[:notice]="Success" 
+
 		redirect_to new_recruitmentoffice_path
 	end
 	def show

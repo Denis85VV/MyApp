@@ -1,13 +1,12 @@
-<%= link_to "Show all", personalfiles_path %>
+<%= link_to "Показать таблицу", personalfiles_path, :class => "btn" %>
 <hr>
-<%= form_for @per do |f| -%>
+<%= flash[:success] %>
+<%= flash[:error] %>
+<%= simple_form_for @per do |f| -%>
 	<p>
-		Фамилия:<br />
-		<%= f.text_field :firstname %><br />
-		Имя:<br /> 
-		<%= f.text_field :middlename %><br />
-		Отчество:<br /> 
-		<%= f.text_field :lastname %><br />
+		<%= f.input :firstname, :label => 'Фамилия:' %><br /> 
+		<%= f.input :middlename, :label => 'Имя:' %><br />
+		<%= f.input :lastname, :label => 'Отчество:'%><br />
 	</p>
 	<p>
 		Год рождения:<br />
@@ -58,11 +57,10 @@
 		 <%= f.select :category, [[" ", " "], ["Ра", "Ра"], ["О", "О"], ["Во", "Во"], ["Ру", "Ру"], ["Дс", "Дс"]] %>
 	</p>
 	<p> 
-		Примечание(№ телефона):<br />
-		<%= f.text_field :note %>
+		<%= f.input :note, :label => 'Примечание(№ телефона):' %>
 	</p>
 
 
-	<%= f.submit "Save" %>
+	<%= f.submit "Сохранить", :class => "btn btn-success" %>
 <% end -%>
 <hr>

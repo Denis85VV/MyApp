@@ -1,4 +1,7 @@
 class PersonalfilesController < ApplicationController
+
+before_action :authenticate_user!
+
 	def new
 		@per = Personalfile.new
 		@ranks = Rank.all
@@ -11,7 +14,11 @@ class PersonalfilesController < ApplicationController
 
 	def create
 		@per = Personalfile.new personalfile_params
-		@per.save
+		if @per.save
+			flash[:success]="Success" 
+		else
+			flash[:error]="Error" 
+		end
 		redirect_to new_personalfile_path
 	end
 	def show

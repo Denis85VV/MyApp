@@ -1,6 +1,7 @@
-<%= link_to "Create new", new_personalfile_path %>
+<%= link_to "Создать призывника", new_personalfile_path, :class => "btn" %>
 <hr>
-<table border="1">
+<table class="table table-striped">
+	<thead>
 			<tr>
 				<th>№</th>
 				<th>ФИО</th>
@@ -14,13 +15,15 @@
 				<th>Срок обуч.</th>
 				<th>Звание</th>
 				<th>Состав</th>
-				<th>Военкомат</th>
+				<!--<th>Военкомат</th>-->
 				<th>Должность</th>
 				<th>Сп.Уч</th>
 				<th>Мб.Пр.</th>
 				<th>Кат.</th>
 				<th>Примечание</th>
 			</tr>
+	</thead>
+	<tbody>		
 	<% if !@personalfiles.blank? %>
 	<% @personalfiles.each do |personalfile| %>
 	    <tr>
@@ -64,9 +67,9 @@
 	  		<td>
 	  			<%= personalfile.consist.try(:name) %>
 	  		</td>
-	  		<td>
+	  		<!--<td>
 	  			<%= personalfile.recruitmentoffice.try(:bigname) %>
-	  		</td>
+	  		</td>-->
 	  		<td>
 	  			<%= personalfile.position.try(:name) %>
 	  		</td>
@@ -83,14 +86,18 @@
 	  			<%= personalfile.note %>
 	  		</td>
 	  		<td>
-	  			<%= link_to 'Destroy', personalfile, method: :delete %>
+	  			<%= link_to '', personalfile_path(personalfile), :class => "icon-print" %>
+	  		</td>	
+	  		<td>
+	  			<%= link_to 'Edit', edit_personalfile_path(personalfile), :class => 'btn btn-mini' %>
 	  		</td>
 	  		<td>
-	  			<%= link_to 'Edit', edit_personalfile_path(personalfile) %>
+	  			<%= link_to 'Destroy', personalfile, method: :delete, :class => 'btn btn-mini btn-danger' %>
 	  		</td>
 	    </tr>
 	<% end %>
 	<% else %>
 	  
 	<% end %>
+	</tbody>
 </table>
