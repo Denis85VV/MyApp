@@ -1,9 +1,11 @@
-<%= link_to "Show all", specialties_path %>
+<%= link_to "Ко всем специальностям", specialties_path, :class => "btn" %>
 <%= form_for @spec do |f| -%>
 	Название специальности:<br />
 	<%= f.text_field :specialtyname %><br />
 	Номер специальности:<br />
 	<%= f.text_field :specialtynumber %><br />
-	<%= f.submit "Save" %>
+	Срок обучения на этой специальности:<br />
+	<%= f.text_field :training_term %><br />
+	<%= f.submit "Сохранить", :class => "btn btn-success" %>
 <% end -%>
 <hr>

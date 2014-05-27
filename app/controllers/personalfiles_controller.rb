@@ -11,13 +11,12 @@ before_action :authenticate_user!
 		@consists = Consist.all
 		@positions = Position.all
 	end
-
 	def create
 		@per = Personalfile.new personalfile_params
 		if @per.save
-			flash[:success]="Success" 
+			flash[:success]="Поздравляю! Форма успешно заполнена!" 
 		else
-			flash[:error]="Error" 
+			flash[:error]="Ошибка! Заполните пустые поля!" 
 		end
 		redirect_to new_personalfile_path
 	end
@@ -25,7 +24,14 @@ before_action :authenticate_user!
 		@per = Personalfile.find(params[:id])
 	end
 	def index
-		@personalfiles = Personalfile.all
+		#@personalfiles = Personalfile.all
+		@search = Personalfile.search(params[:q])
+    	@personalfiles = @search.result
+	end
+
+	def more
+		@search = Personalfile.search(params[:q])
+    	@personalfiles = @search.result
 	end
 
 	def edit
@@ -53,6 +59,6 @@ before_action :authenticate_user!
 	private 
 
 	def personalfile_params
-		params[:personalfile].permit(:firstname, :middlename, :lastname, :gender, :year, :traningcourse, :academicyear, :traning_period, :specialaccount, :mobileorder, :category, :rank_id, :specialty_id, :recruitmentoffice_id, :consist_id, :position_id, :note)
+		params[:personalfile].permit(:firstname, :middlename, :lastname, :gender, :year, :traningcourse, :academicyear, :traning_period, :specialaccount, :mobileorder, :category, :rank_id, :specialty_id, :recruitmentoffice_id, :consist_id, :position_id, :note, :date_of_birth, :place_of_birth, :education, :family_status, :family)
 	end
 end

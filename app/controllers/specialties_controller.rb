@@ -19,6 +19,7 @@ class SpecialtiesController < ApplicationController
 
 	def edit
 		@spec = Specialty.find(params[:id])
+		@faculties = Faculty.all
 	end
 	
 	def update
@@ -36,6 +37,6 @@ class SpecialtiesController < ApplicationController
 	private 
 
 	def specialty_params
-		params[:specialty].permit(:specialtyname, :specialtynumber, :faculty_id)
+		params[:specialty].permit(:specialtyname, :specialtynumber, :training_term, :faculty_id)
 	end
 end

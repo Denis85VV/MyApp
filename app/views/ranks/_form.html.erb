@@ -1,7 +1,7 @@
-<%= link_to "Show all", ranks_path %>
+<%= link_to "Все звания", ranks_path, :class => "btn" %>
 <%= form_for @ran do |f| -%>
-	Название ранга:<br />
+	Название звания:<br />
 	<%= f.text_field :name %><br />
-	<%= f.submit "Save" %>
+	<%= f.submit "Сохранить", :class => "btn btn-success"%>
 <% end -%>
 <hr>

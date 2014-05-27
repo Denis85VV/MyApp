@@ -1,20 +1,37 @@
 <%= link_to "Показать таблицу", personalfiles_path, :class => "btn" %>
 <hr>
-<%= flash[:success] %>
-<%= flash[:error] %>
+<% if flash[:error] %>
+    <div class="alert alert-error"><%= flash[:error] %></div>
+<% end %>
+<% if flash[:success] %>
+    <div class="alert alert-success"><%= flash[:success] %></div>
+<% end %>
 <%= simple_form_for @per do |f| -%>
+	
 	<p>
 		<%= f.input :firstname, :label => 'Фамилия:' %><br /> 
 		<%= f.input :middlename, :label => 'Имя:' %><br />
 		<%= f.input :lastname, :label => 'Отчество:'%><br />
 	</p>
 	<p>
-		Год рождения:<br />
-		<%= f.select :year, [["1990", "1990"], ["1991", "1991"], ["1992", "1992"], ["1993", "1993"], ["1994", "1994"], ["1995", "1995"], ["1996", "1996"], ["1997", "1997"], ["1998", "1998"], ["1999", "1999"], ["2000", "2000"], ["2001", "2001"], ["2002", "2002"]] %><br />
+		<%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 60, end_year: Date.today.year - 14, order: [:day, :month, :year], :label => 'Дата рождения:' %><br />
 	</p>
 	<p>
-		Пол:<br />
-		 <%= f.select :gender, [["М", "М"], ["Ж", "Ж"]] %>
+		<%= f.input :gender, as: :radio_buttons, collection: [ "М", "Ж" ], :label => 'Пол:' %>
+		 <!--<%= f.select :gender, [["М", "М"], ["Ж", "Ж"]] %>-->
+	</p>
+	<P>
+		<%= f.input :place_of_birth, :label => 'Место рождения:' %>
+	</P>
+	<p>
+		<%= f.input :education, :label => 'Образование:' %>
+	</p>
+	<p>
+		Cемейное положение:<br>
+		<%= f.select :family_status, [["холост", "холост"], ["женат", "женат"], ["замужем", "замужем"]], :label => 'Семейное положение:' %>
+	</p>
+	<p>
+		<%= f.input :family, :label => 'Состав семьи:'%>
 	</p>
 	<p>
 		Специальность:<br />
@@ -28,10 +45,7 @@
 		Учебный год:<br />
 		 <%= f.select :academicyear, [["11-12", "11-12"], ["12-13", "12-13"], ["13-14", "13-14"],["14-15", "14-15"], ["15-16", "15-16"]] %>
 	</p>
-	<p>
-		Срок обучения:<br />
-		 <%= f.select :traning_period, [["1", "1"], ["2", "2"],["3", "3"], ["4", "4"],["5", "5"]] %>
-	</p>
+	<!--Убрал время обучения -->
 	<p>
 		Воинское звание:<br />
 		 <%= f.select :rank_id, options_for_select(@ranks.map{ |f| [f.name, f.id] })%>
@@ -49,10 +63,10 @@
 		 <%= f.select :position_id, options_for_select(@positions.map{ |f| [f.name, f.id] })%>
 	</p>
 	<p>
-		Спецучет:<br />
-		 <%= f.select :specialaccount, [[" ", " "], ["Су", "Су"]] %><br />
-		 Мобпредписание:<br />
-		 <%= f.select :mobileorder, [[" ", " "], ["М", "М"]] %><br />
+		<%= f.input :specialaccount, as: :boolean, checked_value: ["Cу"], unchecked_value: nil, collection: [ "Cу" ], :label => 'Спецучет:' %>
+	
+		 <%= f.input :mobileorder, as: :boolean, checked_value: ["Моб."], unchecked_value: nil, collection: [ "Моб." ], :label => 'Мобпредписание:' %>
+
 		 Категории:<br />
 		 <%= f.select :category, [[" ", " "], ["Ра", "Ра"], ["О", "О"], ["Во", "Во"], ["Ру", "Ру"], ["Дс", "Дс"]] %>
 	</p>

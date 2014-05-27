@@ -1,17 +1,17 @@
-Display <%= link_to "Create new", new_position_path %>
+<%= link_to "Добавить должность", new_position_path, :class => "btn" %>
 <hr>
-<table border="1">
+<table class="table table-striped table-bordered">
 	<% if !@positions.blank? %>
 	<% @positions.each do |position| %>
 	    <tr>
 	    	<td>
 	    		<%= position.name %>
-	    	</td>	
+	    	</td>
+	    	<td>
+	  			<%= link_to 'Изменить', edit_position_path(position), :class => 'btn btn-mini' %>
+	  		</td>	
 	  		<td>
-	  			<%= link_to 'Destroy', position, method: :delete %>
-	  		</td>
-	  		<td>
-	  			<%= link_to 'Edit', edit_position_path(position) %>
+	  			<%= link_to 'Удалить', position, method: :delete, :class => 'btn btn-mini btn-danger' %>
 	  		</td>
 	    </tr>
 	<% end %>

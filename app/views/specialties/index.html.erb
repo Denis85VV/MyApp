@@ -1,20 +1,34 @@
-Display <%= link_to "Create new", new_specialty_path %>
+<%= link_to "Добавить специаольность", new_specialty_path, :class => "btn" %>
 <hr>
-<table border="1">
+<div id = "cd">
+<table class="table table-striped table-bordered">
+	<thead>
+			<tr>
+				<th>Код специаольности</th>
+				<th>Назваие специаольности</th>
+				<th>Срок обучения</th>
+			</tr>
+	</thead>
 	<% if !@specialties.blank? %>
 	<% @specialties.each do |specialty| %>
 	    <tr>
 	    	<td>
-	    		<%= link_to specialty.specialtynumber, specialty_path(specialty) %>
+	    		<%= link_to specialty.specialtynumber %>
 	    	</td>	
 	  		<td>
 	  			<%= specialty.specialtyname %>
 	  		</td>
 	  		<td>
-	  			<%= link_to 'Destroy', specialty, method: :delete %>
+	  			<%= specialty.training_term %>
 	  		</td>
 	  		<td>
-	  			<%= link_to 'Edit', edit_specialty_path(specialty) %>
+	  			<%= link_to 'Присвоить факультет', specialty_path(specialty), :class => 'btn btn-mini btn-warning' %>
+	  		</td>
+	  		<td>
+	  			<%= link_to 'Изменить', edit_specialty_path(specialty), :class => 'btn btn-mini' %>
+	  		</td>
+	  		<td>
+	  			<%= link_to 'Удалить', specialty, method: :delete, :class => 'btn btn-mini btn-danger' %>
 	  		</td>
 	    </tr>
 	<% end %>
@@ -22,6 +36,7 @@ Display <%= link_to "Create new", new_specialty_path %>
 	  
 	<% end %>
 </table>
+</div>
 <hr>
 <div>
 <% if !@specialties.blank? %>

@@ -7,7 +7,9 @@ SFAppSpANDFac::Application.routes.draw do
   resources :ranks
   resources :consists
   resources :positions
-  resources :personalfiles
+  resources :personalfiles do
+    get "more", on: :collection
+  end
 
   root to: "personalfiles#index"
   

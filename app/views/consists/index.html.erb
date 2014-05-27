@@ -1,6 +1,6 @@
-Display <%= link_to "Create new", new_consist_path %>
+<%= link_to "Добавить состав", new_consist_path, :class => "btn" %>
 <hr>
-<table border="1">
+<table class="table table-striped table-bordered">
 	<% if !@consists.blank? %>
 	<% @consists.each do |consist| %>
 	    <tr>
@@ -8,10 +8,10 @@ Display <%= link_to "Create new", new_consist_path %>
 	    		<%= consist.name %>
 	    	</td>	
 	  		<td>
-	  			<%= link_to 'Destroy', consist, method: :delete %>
+	  			<%= link_to 'Изменить', edit_consist_path(consist), :class => 'btn btn-mini' %>
 	  		</td>
 	  		<td>
-	  			<%= link_to 'Edit', edit_consist_path(consist) %>
+	  			<%= link_to 'Удалить', consist, method: :delete, :class => 'btn btn-mini btn-danger' %>
 	  		</td>
 	    </tr>
 	<% end %>

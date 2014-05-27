@@ -1,7 +1,7 @@
-<%= link_to "Show all", positions_path %>
+<%= link_to "Все должности", positions_path, :class => "btn" %>
 <%= form_for @pos do |f| -%>
 	Название должности:<br />
 	<%= f.text_field :name %><br />
-	<%= f.submit "Save" %>
+	<%= f.submit "Сохранить", :class => "btn btn-success" %>
 <% end -%>
 <hr>

@@ -1,0 +1,10 @@
+<%= link_to "Перейти к специальностям", specialties_path, :class => "btn" %><br/>
+<%= link_to "Перейти к факультетам", faculties_path, :class => "btn" %><br/>
+Специальность: <%= @spec.specialtyname %><br/>
+№ специальности:  <%= @spec.specialtynumber %><br/>
+Факультет: <%= @spec.faculty.try(:facultyname) %><br/>
+
+<%= form_for(@spec) do |f| %>
+<%= f.select :faculty_id, options_for_select(@faculties.map{ |f| [f.facultyname, f.id] }) %><br/>
+<%= f.submit "Присвоить", :class => "btn btn-warning" %>
+<% end %>

@@ -11,6 +11,7 @@ class RecruitmentofficesController < ApplicationController
 			flash[:notice]="Success" 
 
 		redirect_to new_recruitmentoffice_path
+		end
 	end
 	def show
 		@recru = Recruitmentoffice.find(params[:id])
