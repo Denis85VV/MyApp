@@ -33,8 +33,7 @@
       <a class="brand" ><%= image_tag("tvgu_0.jpg", size: "20") %>  <%= current_user.email %></a>
       <div class="nav-collapse">
         <ul class="nav">
-          <li><%= link_to "Главная" %></li>
-          <li><%= link_to "Все личности", personalfiles_path %></li>
+          <li><%= link_to "Личные карточки", personalfiles_path %></li>
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Справочники<b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -47,9 +46,10 @@
             <li><%= link_to "Должности", positions_path %></li>
           </ul>
         </li>
-          <li><%= link_to "Отчеты" %></li>
+          <li><%= link_to "Общий список", more_personalfiles_path  %></li>
           <form class="navbar-search pull-left">
             <input type="text" class="search-query" placeholder="Поиск">
+            <button type="submit" class="btn">Поиск</button>
           </form>
           <li><%= link_to "Выйти", destroy_user_session_path, :method => :delete %></li>
           <% else %>

@@ -1,104 +1,120 @@
-<%= link_to "Создать призывника", new_personalfile_path, :class => "btn" %>
-<hr>
-
 <table class="table table-striped table-bordered" >
-	<thead>
-			<tr>
-				<th><%= sort_link @search, :id, "№" %></th>
-				<th><%= sort_link @search, :firstname, "ФИО" %></th>
-				<th><%= sort_link @search, :gender, "Пол" %></th>
-				<th><%= sort_link @search, :year, "Год" %></th>
-				<th>№ Спец</th>
-				<th><%= sort_link @search, :specialty_id, "Наз.Спец" %></th>
-				<th>Наз.Фак</th>
-				<th><%= sort_link @search, :traningcourse, "Курс" %></th>
-				<th><%= sort_link @search, :academicyear, "Уч.год" %></th>
-				<th><%= sort_link @search, :training_term, "Срок обуч." %></th>
-				<th>Звание</th>
-				<th>Состав</th>
-				<th>Военкомат</th>
-				<th>Должность</th>
-				<th>Сп.Уч</th>
-				<th>Мб.Пр.</th>
-				<th>Кат.</th>
-				<th>Примечание</th>
-			</tr>
-	</thead>
-	<tbody>		
-	<% if !@personalfiles.blank? %>
-	<% @personalfiles.each do |personalfile| %>
-	    <tr>
-	    	<td>
-	    		<%= personalfile.id %>
-	    	</td>
-	    	<td>
-	    		<%= personalfile.firstname %><br />
-	    	
-	  			<%= personalfile.middlename %><br />
+			<thead>
+				<!--<%= search_form_for @search do |f| %>
+				<%= f.submit %>	
+				<%= f.search_field :id_cont %>
+				<% end %>-->
+						<th><%= sort_link @search, :id, "№" %></th>
+						<th><%= sort_link @search, :firstname, "ФИО" %></th>
+						<!--<th><%= sort_link @search, :gender, "Пол" %></th>-->
+						<th><%= sort_link @search, :date_of_birth, "Год" %></th>
+						<!--<th><%= sort_link @search, :place_of_birth, "Место рождения" %></th>
+						<th><%= sort_link @search, :education, "Образование" %></th>
+						<th><%= sort_link @search, :family_status, "Семейное положение" %></th>
+						<th><%= sort_link @search, :family, "Состав семьи" %></th>-->
+						<th>№ Спец</th>
+						<th><%= sort_link @search, :specialty_id, "Наз.Спец" %></th>
+						<th>Наз.Фак</th>
+						<th><%= sort_link @search, :traningcourse, "Курс" %></th>
+						<th><%= sort_link @search, :academicyear, "Уч.год" %></th>
+						<th><%= sort_link @search, :training_term, "Срок обуч." %></th>
+						<th><%= sort_link @search, :position_id, "Должность" %></th>
+						<th><%= sort_link @search, :rank_id, "Звание" %></th>
+						<th><%= sort_link @search, :consist_id, "Состав" %></th>
+						<th><%= sort_link @search, :recruitmentoffice_id, "Военкомат" %></th>
+						<th>Сп.Уч</th>
+						<th>Мб.Пр.</th>
+						<th>Кат.</th>
+						<th>Примечание</th>
+					</tr>
+			</thead>
+			<tbody>		
+			<% if !@personalfiles.blank? %>
+			<% @personalfiles.each do |personalfile| %>
+			    <tr>
+			    	<td>
+			    		<%= personalfile.id %>
+			    	</td>
+			    	<td>
+			    		<%= personalfile.firstname %><br />
+			    	
+			  			<%= personalfile.middlename %><br />
 
-	  			<%= personalfile.lastname %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.gender %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.year %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.specialty.try(:specialtynumber) %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.specialty.try(:specialtyname) %>
-	  		</td>	
-	  		<td>
-	  			<%= personalfile.specialty.try(:faculty).try(:facultyname) %>	
-	  		</td>
-	  		<td>
-	  			<%= personalfile.traningcourse %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.academicyear %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.specialty.try(:training_term) %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.rank.try(:name) %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.consist.try(:name) %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.recruitmentoffice.try(:bigname) %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.position.try(:name) %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.specialaccount %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.mobileorder %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.category %>
-	  		</td>
-	  		<td>
-	  			<%= personalfile.note %>
-	  		</td>
-	  		<td>
-	  			<%= link_to '', personalfile_path(personalfile), :class => "icon-print" %>
-	  		</td>	
-	  		<td>
-	  			<%= link_to 'Изменить', edit_personalfile_path(personalfile), :class => 'btn btn-mini' %>
-	  		</td>
-	  		<td>
-	  			<%= link_to 'Удалить', personalfile, method: :delete, :class => 'btn btn-mini btn-danger' %>
-	  		</td>
-	    </tr>
-	<% end %>
-	<% else %>
-	  
-	<% end %>
-	</tbody>
-</table>
+			  			<%= personalfile.lastname %>
+			  		</td>
+			  		<!--<td>
+			  			<%= personalfile.gender %>
+			  		</td>-->
+			  		<td>
+			  			<%= personalfile.date_of_birth %>
+			  		</td>
+			  		<!--<td>
+			  			<%= personalfile.place_of_birth %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.education %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.family_status %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.family %>
+			  		</td>-->
+			  		<td>
+			  			<%= personalfile.specialty.try(:specialtynumber) %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.specialty.try(:specialtyname) %>
+			  		</td>	
+			  		<td>
+			  			<%= personalfile.specialty.try(:faculty).try(:facultyname) %>	
+			  		</td>
+			  		<td>
+			  			<%= personalfile.traningcourse %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.academicyear %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.specialty.try(:training_term) %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.position.try(:name) %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.rank.try(:name) %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.consist.try(:name) %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.recruitmentoffice.try(:smallname) %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.specialaccount %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.mobileorder %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.category %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.note %>
+			  		</td>
+			  		<td>
+			  			<%= link_to '', personalfile_path(personalfile), :class => "icon-print" %>
+			  		</td>	
+			  		<td>
+			  			<%= link_to 'Изменить', edit_personalfile_path(personalfile), :class => 'btn btn-mini' %>
+			  		</td>
+			  		<td>
+			  			<%= link_to 'Удалить', personalfile, method: :delete, :class => 'btn btn-mini btn-danger' %>
+			  		</td>
+			    </tr>
+			<% end %>
+			<% else %>
+			  
+			<% end %>
+			</tbody>
+		</table>

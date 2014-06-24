@@ -7,6 +7,7 @@
 				<th>Код специаольности</th>
 				<th>Назваие специаольности</th>
 				<th>Срок обучения</th>
+				<th>Присвоенный факультет</th>
 			</tr>
 	</thead>
 	<% if !@specialties.blank? %>
@@ -22,7 +23,7 @@
 	  			<%= specialty.training_term %>
 	  		</td>
 	  		<td>
-	  			<%= link_to 'Присвоить факультет', specialty_path(specialty), :class => 'btn btn-mini btn-warning' %>
+	  			<%= specialty.faculty.try(:facultyname) %>
 	  		</td>
 	  		<td>
 	  			<%= link_to 'Изменить', edit_specialty_path(specialty), :class => 'btn btn-mini' %>

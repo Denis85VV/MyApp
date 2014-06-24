@@ -1,11 +1,11 @@
 <p>
 <%= link_to "Создать призывника", new_personalfile_path, :class => "btn" %>
-<%= link_to "Полный список", more_personalfiles_path, :class => "btn" %>
+<!--<%= link_to "Полный список", more_personalfiles_path, :class => "btn" %>-->
 </p>
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab1" data-toggle="tab">I. Общие сведения</a></li>
-    <li><a href="#tab2" data-toggle="tab">II. Свединия о воинском учете</a></li>
+    <li><a href="#tab2" data-toggle="tab">II. Сведения о воинском учете</a></li>
     <li><a href="#tab3" data-toggle="tab">III. Назначения и перемещения</a></li>
     <li><a href="#tab4" data-toggle="tab">IV. Отпуска</a></li>
   </ul>
@@ -25,9 +25,16 @@
 						<th>№ Спец</th>
 						<th><%= sort_link @search, :specialty_id, "Наз.Спец" %></th>
 						<th>Наз.Фак</th>
-						<th><%= sort_link @search, :traningcourse, "Курс" %></th>
+						<!--<th><%= sort_link @search, :traningcourse, "Курс" %></th>
 						<th><%= sort_link @search, :academicyear, "Уч.год" %></th>
 						<th><%= sort_link @search, :traning_period, "Срок обуч." %></th>
+						<th><%= sort_link @search, :position_id, "Должность" %></th>
+						<th><%= sort_link @search, :rank_id, "Звание" %></th>
+						<th><%= sort_link @search, :consist_id, "Состав" %></th>
+						<th><%= sort_link @search, :recruitmentoffice_id, "Военкомат" %></th>
+						<th>Сп.Уч</th>
+						<th>Мб.Пр.</th>
+						<th>Кат.</th>-->
 						<th>Примечание</th>
 					</tr>
 			</thead>
@@ -72,15 +79,36 @@
 			  		<td>
 			  			<%= personalfile.specialty.try(:faculty).try(:facultyname) %>	
 			  		</td>
-			  		<td>
+			  		<!--<td>
 			  			<%= personalfile.traningcourse %>
 			  		</td>
 			  		<td>
 			  			<%= personalfile.academicyear %>
 			  		</td>
 			  		<td>
-			  			<%= personalfile.traning_period %>
+			  			<%= personalfile.specialty.try(:training_term) %>
 			  		</td>
+			  		<td>
+			  			<%= personalfile.position.try(:name) %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.rank.try(:name) %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.consist.try(:name) %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.recruitmentoffice.try(:smallname) %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.specialaccount %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.mobileorder %>
+			  		</td>
+			  		<td>
+			  			<%= personalfile.category %>
+			  		</td>-->
 			  		<td>
 			  			<%= personalfile.note %>
 			  		</td>
@@ -100,12 +128,12 @@
 			<% end %>
 			</tbody>
 		</table>
-	</div>
+</div>
     <div class="tab-pane" id="tab2">
       <table class="table table-striped table-bordered" >
 			<thead>
 					<tr>
-						<th><%= sort_link @search, :id, "№" %></th>
+						<th><%= sort_link @search, :firstname, "ФИО" %></th>
 						<th><%= sort_link @search, :position_id, "Должность" %></th>
 						<th><%= sort_link @search, :rank_id, "Звание" %></th>
 						<th><%= sort_link @search, :consist_id, "Состав" %></th>
@@ -120,8 +148,12 @@
 			<% @personalfiles.each do |personalfile| %>
 			    <tr>
 			    	<td>
-			    		<%= personalfile.id %>
-			    	</td>
+			    		<%= personalfile.firstname %><br />
+			    	
+			  			<%= personalfile.middlename %><br />
+
+			  			<%= personalfile.lastname %>
+			  		</td>
 			    	<td>
 			  			<%= personalfile.position.try(:name) %>
 			  		</td>
@@ -159,12 +191,12 @@
 			<% end %>
 			</tbody>
 		</table>
-    </div>
-    <div class="tab-pane" id="tab3">
-      <p>3-я секция.</p>
-    </div>
-    <div class="tab-pane" id="tab4">
-      <p>4-я секция.</p>
-    </div>
-  </div>
-</div>
+		</div>
+		<div class="tab-pane" id="tab3">
+      		<p>ПУСТО!</p>
+    	</div>
+    	<div class="tab-pane" id="tab4">
+      		<p>ПУСТО!</p>
+    	</div>
+	  </div>
+	</div>	

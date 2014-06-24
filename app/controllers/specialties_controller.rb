@@ -1,6 +1,7 @@
 class SpecialtiesController < ApplicationController
 	def new
 		@spec = Specialty.new
+		@faculties = Faculty.all
 	end
 
 	def create
@@ -25,7 +26,7 @@ class SpecialtiesController < ApplicationController
 	def update
 		@spec = Specialty.find(params[:id])
 		@spec.update_attributes(specialty_params)
-		redirect_to specialty_path
+		redirect_to specialties_path
 	end
 
 	def destroy

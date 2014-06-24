@@ -1,5 +1,5 @@
-<%= link_to "Show all", faculties_path %><br/>
-Go to <%= link_to "spesialty", specialties_path %><br/>
+<%= link_to "Все факультеты", faculties_path, :class => "btn" %>
+Go to <%= link_to "Все спицеальности", specialties_path, :class => "btn" %><br/>
 Факультет: <%= @fac.facultyname %><br/>
 <% if not @fac.specialties.blank? %>
 <ul>Специальности: 

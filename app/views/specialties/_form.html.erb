@@ -1,11 +1,14 @@
 <%= link_to "Ко всем специальностям", specialties_path, :class => "btn" %>
 <%= form_for @spec do |f| -%>
 	Название специальности:<br />
-	<%= f.text_field :specialtyname %><br />
+<%= f.text_field :specialtyname %><br />
 	Номер специальности:<br />
-	<%= f.text_field :specialtynumber %><br />
+<%= f.text_field :specialtynumber %><br />
 	Срок обучения на этой специальности:<br />
-	<%= f.text_field :training_term %><br />
+<%= f.text_field :training_term %><br />
+	Выберити факультет этой спецмаольности:<br>
+<%= f.select :faculty_id, options_for_select(@faculties.map{ |f| [f.facultyname, f.id] }) %><br/>
+
 	<%= f.submit "Сохранить", :class => "btn btn-success" %>
 <% end -%>
 <hr>
