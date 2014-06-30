@@ -49,7 +49,6 @@
           <li><%= link_to "Общий список", more_personalfiles_path  %></li>
           <form class="navbar-search pull-left">
             <input type="text" class="search-query" placeholder="Поиск">
-            <button type="submit" class="btn">Поиск</button>
           </form>
           <li><%= link_to "Выйти", destroy_user_session_path, :method => :delete %></li>
           <% else %>

@@ -1,6 +1,8 @@
 class PersonalfilesController < ApplicationController
 
 before_action :authenticate_user!
+before_filter :find_personalfile, only: [:show, :edit, :update, :destroy]
+before_filter :search_personalfile, only: [:index, :more]
 
 	def new
 		@per = Personalfile.new
@@ -20,22 +22,17 @@ before_action :authenticate_user!
 		end
 		redirect_to new_personalfile_path
 	end
+
 	def show
-		@per = Personalfile.find(params[:id])
 	end
+	
 	def index
-		#@personalfiles = Personalfile.all
-		@search = Personalfile.search(params[:q])
-    	@personalfiles = @search.result
 	end
 
 	def more
-		@search = Personalfile.search(params[:q])
-    	@personalfiles = @search.result
 	end
 
 	def edit
-		@per = Personalfile.find(params[:id])
 		@ranks = Rank.all
 		@faculties = Faculty.all
 		@specialties = Specialty.all
@@ -45,20 +42,32 @@ before_action :authenticate_user!
 	end
 	
 	def update
-		@per = Personalfile.find(params[:id])
 		@per.update_attributes(personalfile_params)
 		redirect_to personalfiles_path
 	end
 
 	def destroy
-		@per = Personalfile.find(params[:id])
 		@per.destroy
 		redirect_to personalfiles_path
 	end
+
+	def destroy_multiple
+		Personalfile.destroy(params[:personalfiles])
+		redirect_to more_personalfiles_path
+	end
 		
-	private 
+	private
+
+	def find_personalfile
+		@per = Personalfile.find(params[:id])
+	end
+
+	def search_personalfile
+		@search = Personalfile.search(params[:q])
+    	@personalfiles = @search.result
+	end
 
 	def personalfile_params
-		params[:personalfile].permit(:firstname, :middlename, :lastname, :gender, :year, :traningcourse, :academicyear, :traning_period, :specialaccount, :mobileorder, :category, :rank_id, :specialty_id, :recruitmentoffice_id, :consist_id, :position_id, :note, :date_of_birth, :place_of_birth, :education, :family_status, :family)
+		params[:personalfile].permit(:firstname, :middlename, :lastname, :gender, :year, :traningcourse, :academicyear, :traning_period, :specialaccount, :mobileorder, :category, :rank_id, :specialty_id, :recruitmentoffice_id, :consist_id, :position_id, :note, :date_of_birth, :place_of_birth, :education, :family_status, :family, :image_url)
 	end
 end

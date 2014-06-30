@@ -9,6 +9,10 @@ SFAppSpANDFac::Application.routes.draw do
   resources :positions
   resources :personalfiles do
     get "more", on: :collection
+    
+    collection do
+      delete 'destroy_multiple'
+    end 
   end
 
   root to: "personalfiles#index"

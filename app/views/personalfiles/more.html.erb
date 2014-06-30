@@ -4,6 +4,8 @@
 				<%= f.submit %>	
 				<%= f.search_field :id_cont %>
 				<% end %>-->
+						<th></th>
+						<th>Изображение</th>
 						<th><%= sort_link @search, :id, "№" %></th>
 						<th><%= sort_link @search, :firstname, "ФИО" %></th>
 						<!--<th><%= sort_link @search, :gender, "Пол" %></th>-->
@@ -28,10 +30,17 @@
 						<th>Примечание</th>
 					</tr>
 			</thead>
+			<%= form_tag destroy_multiple_personalfiles_path, method: :delete do %>
 			<tbody>		
 			<% if !@personalfiles.blank? %>
 			<% @personalfiles.each do |personalfile| %>
 			    <tr>
+			    	<td>
+			    		<%= check_box_tag "personalfiles[]", personalfile.id %>
+			    	</td>
+			    	<td>
+			    		<%= image_tag(personalfile.image_url, class: "icon") %>
+			    	</td>
 			    	<td>
 			    		<%= personalfile.id %>
 			    	</td>
@@ -118,3 +127,5 @@
 			<% end %>
 			</tbody>
 		</table>
+		<%= submit_tag "Удалить все", :class => 'btn btn-danger' %>
+		<% end %>

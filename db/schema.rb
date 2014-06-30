@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140527213142) do
+ActiveRecord::Schema.define(version: 20140629222625) do
 
   create_table "consists", force: true do |t|
     t.string   "name"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140527213142) do
     t.string   "education"
     t.string   "family_status"
     t.string   "family"
+    t.string   "image_url"
   end
 
   create_table "positions", force: true do |t|

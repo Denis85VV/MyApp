@@ -14,6 +14,9 @@
 		<%= f.input :lastname, :label => 'Отчество:'%><br />
 	</p>
 	<p>
+		<%= f.input :image_url %><br>
+	</p>
+	<p>
 		<%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 60, end_year: Date.today.year - 14, order: [:day, :month, :year], :label => 'Дата рождения:' %><br />
 	</p>
 	<p>
